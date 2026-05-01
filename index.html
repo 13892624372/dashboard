@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI面试模拟器 - 用户反馈数据看板</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts-wordcloud@2.1.0/dist/echarts-wordcloud.min.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <header class="header">
+            <h1>AI面试模拟器 - 用户反馈数据看板</h1>
+            <div class="header-actions">
+                <span class="last-update">最后更新: <span id="lastUpdate">--</span></span>
+                <button class="refresh-btn" onclick="refreshData()">刷新数据</button>
+            </div>
+        </header>
+
+        <!-- 核心指标卡片 -->
+        <div class="metrics-row">
+            <div class="metric-card">
+                <div class="metric-value" id="totalResponses">0</div>
+                <div class="metric-label">总问卷数</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="avgSatisfaction">0.0</div>
+                <div class="metric-label">平均满意度</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="npsValue">0</div>
+                <div class="metric-label">NPS值</div>
+            </div>
+        </div>
+
+        <!-- 图表区域 -->
+        <div class="charts-grid">
+            <!-- 第一行：用户画像（2格）| 行业分布（1格） -->
+            <div class="chart-card wide-2">
+                <h3>用户画像</h3>
+                <div class="chart" id="q1IdentityChart"></div>
+            </div>
+
+            <div class="chart-card">
+                <h3>行业分布</h3>
+                <div class="chart" id="q2IndustryChart"></div>
+            </div>
+
+            <!-- 第二行：平均满意度（整行） -->
+            <div class="chart-card full-width">
+                <h3>平均满意度趋势</h3>
+                <div class="chart" id="q6SatisfactionChart"></div>
+            </div>
+
+            <!-- 第三行：五维度评分（2格）| NPS分布（2格） -->
+            <div class="chart-card wide-2">
+                <h3>五维度评分</h3>
+                <div class="chart" id="q7RadarChart"></div>
+            </div>
+
+            <div class="chart-card wide-2">
+                <h3>NPS分布</h3>
+                <div class="chart" id="q8NpsChart"></div>
+            </div>
+
+            <!-- 第四行：词云图（2格 x 2） -->
+            <div class="chart-card wide-2">
+                <h3>做得好的方面</h3>
+                <div class="chart" id="q9GoodChart"></div>
+            </div>
+
+            <div class="chart-card wide-2">
+                <h3>改进建议</h3>
+                <div class="chart" id="q10ImproveChart"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

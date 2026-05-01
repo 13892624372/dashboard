@@ -1,0 +1,17 @@
+session_id,week,has_hallucination,question_match_score
+session_001,2024-W03,FALSE,5
+session_002,2024-W03,FALSE,4
+session_004,2024-W03,TRUE,3
+session_005,2024-W03,FALSE,5
+session_006,2024-W03,FALSE,5
+session_008,2024-W03,TRUE,2
+session_009,2024-W03,FALSE,4
+session_010,2024-W03,FALSE,3
+session_011,2024-W03,FALSE,5
+session_012,2024-W03,FALSE,4
+session_014,2024-W03,FALSE,5
+session_015,2024-W03,FALSE,4
+session_017,2024-W03,TRUE,2
+session_018,2024-W03,FALSE,5
+session_019,2024-W03,FALSE,3
+session_020,2024-W03,FALSE,4

@@ -1,0 +1,217 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    background: linear-gradient(135deg, #f2f3f7 0%, #cecbd1 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* 仪表盘容器 */
+.dashboard {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* 头部 */
+.header {
+    background: white;
+    border-radius: 16px;
+    padding: 20px 30px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    font-size: 18px;
+    color: #0d0000;
+    font-weight: 400;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.last-update {
+    color: #d1bebe;
+    font-size: 14px;
+}
+
+.refresh-btn {
+    background: linear-gradient(135deg, #848898 0%, #62586c 100%);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.refresh-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(15, 15, 15, 0.4);
+}
+
+.refresh-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* 核心指标卡片行 */
+.metrics-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.metric-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(229, 54, 54, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-4px);
+}
+
+.metric-value {
+    font-size: 36px;
+    font-weight: 400;
+    color: #020202;
+    margin-bottom: 8px;
+}
+
+.metric-label {
+    font-size: 14px;
+    color: #6f6f6f;
+}
+
+/* 图表网格 */
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.chart-card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.chart-card.wide-2 {
+    grid-column: span 2;
+}
+
+.chart-card.full-width {
+    grid-column: span 4;
+}
+
+.chart-card.full-width .chart {
+    height: 350px;
+}
+
+.chart-card h3 {
+    font-size: 16px;
+    color: #505050;
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+
+.chart {
+    width: 100%;
+    height: 280px;
+}
+
+/* 加载状态 */
+.chart.loading {
+    position: relative;
+}
+
+.chart.loading::after {
+    content: '加载中...';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #999;
+    font-size: 14px;
+}
+
+/* 错误信息 */
+.error-message {
+    text-align: center;
+    padding: 40px 20px;
+    color: #251d1d;
+}
+
+.error-message h3 {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.error-message p {
+    font-size: 14px;
+    color: #999;
+}
+
+/* 响应式 */
+@media (max-width: 1400px) {
+    .charts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .chart-card.wide-2 {
+        grid-column: span 2;
+    }
+
+    .chart-card.full-width {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .metrics-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-card.wide-2 {
+        grid-column: span 1;
+    }
+
+    .chart-card.full-width {
+        grid-column: span 1;
+    }
+    
+    .chart-card.wide {
+        grid-column: span 1;
+    }
+    
+    .header {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+}
