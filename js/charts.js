@@ -110,8 +110,21 @@ class DashboardCharts {
             }
         });
 
+        const totalUsers = newUsers + oldUsers;
+        const newUserPercent = totalUsers > 0 ? Math.round((newUsers / totalUsers) * 100) : 0;
+        const oldUserPercent = totalUsers > 0 ? Math.round((oldUsers / totalUsers) * 100) : 0;
+
         const option = {
-            tooltip: { trigger: 'item', formatter: '{b}: {c} ({d}%)' },
+            tooltip: { 
+                trigger: 'item', 
+                formatter: function(params) {
+                    if (params.seriesType === 'bar') {
+                        const percent = params.name === '新用户' ? newUserPercent : oldUserPercent;
+                        return params.name + ': ' + params.value + '人 (' + percent + '%)';
+                    }
+                    return params.name + ': ' + params.value + ' (' + params.percent + '%)';
+                }
+            },
             legend: {
                 data: ['身份分布', '新用户', '老用户'],
                 top: 0,
