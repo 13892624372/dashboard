@@ -125,13 +125,7 @@ class DashboardCharts {
                     return params.name + ': ' + params.value + ' (' + params.percent + '%)';
                 }
             },
-            legend: {
-                data: ['身份分布', '新用户', '老用户'],
-                top: 0,
-                textStyle: { fontSize: 10 },
-                itemWidth: 12,
-                itemHeight: 12
-            },
+
             grid: {
                 left: '55%',
                 right: '5%',
@@ -315,9 +309,16 @@ class DashboardCharts {
                     data: avgScores,
                     smooth: true,
                     symbol: 'circle',
-                    symbolSize: 6,
-                    lineStyle: { color: '#667eea', width: 2 },
-                    itemStyle: { color: '#667eea' },
+                    symbolSize: 8,
+                    lineStyle: { color: '#666666', width: 2 },
+                    itemStyle: {
+                        color: function(params) {
+                            const score = parseFloat(params.value);
+                            if (score >= 4) return '#52c41a';
+                            if (score >= 3) return '#faad14';
+                            return '#f5222d';
+                        }
+                    },
                     yAxisIndex: 0
                 },
                 {
@@ -326,8 +327,8 @@ class DashboardCharts {
                     data: counts,
                     barWidth: '40%',
                     itemStyle: {
-                        color: 'rgba(102, 126, 234, 0.3)',
-                        borderColor: '#667eea',
+                        color: 'rgba(200, 200, 200, 0.3)',
+                        borderColor: '#999999',
                         borderWidth: 1
                     },
                     yAxisIndex: 1
